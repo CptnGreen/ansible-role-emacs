@@ -1,0 +1,6 @@
+---
+- name: "Install emacs using dnf"
+  dnf:
+    name: emacs
+    state: present
+    update_cache: yes

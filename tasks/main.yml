@@ -1,0 +1,12 @@
+---
+- name: "Install Emacs"
+  block: 
+    - name: "Deploy Emacs on Arch"
+      include_tasks: Arch.yml
+      when: ansible_distribution == "Archlinux"
+    - name: "Deploy Emacs on RedHat"
+      include_tasks: RedHat.yml
+      when: ansible_distribution == "RedHat"
+    - name: "Deploy Emacs on Debian-based system"
+      include_tasks: Debian.yml
+      when: ansible_distribution == "Debian"

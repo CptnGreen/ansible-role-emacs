@@ -1,0 +1,19 @@
+---
+- name: "Install Emacs using Pacman"
+  pacman:
+    name: emacs
+    state: latest
+    update_cache: yes
+
+- name: "Set up emacs daemon"
+  remote_user: "{{ user_name }}"
+  block:
+    - name: "Enable systemd unit"
+      service:
+        name: emacs
+        state: enabled
+    - name: "Start emacs daemon"
+      service:
+        name: emacs
+        state: started
+  when: user_name is defined

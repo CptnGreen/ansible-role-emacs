@@ -1,0 +1,14 @@
+---
+- name: "Add Kevin Kelley's PPA and update apt"
+  apt_repository:
+    update_cache: yes
+    repo: ppa:kelleyk/emacs
+- name: "Purge prior emacs installation"
+  apt:
+    name: emacs
+    state: absent
+    purge: yes
+- name: "Install emacs"
+  apt:
+    name: emacs26
+    state: present
